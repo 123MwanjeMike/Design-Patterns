@@ -1,4 +1,5 @@
 const chalk = require('chalk');
+const title = chalk.blue;
 
 class shoppingCart {
     items: any[] = [];
@@ -59,22 +60,19 @@ class shoppingCart {
         for (var i in this.prices){
             this.totalAmount += this.prices[i]
         }
-        return this.totalAmount;   
+        return chalk.red(this.totalAmount);   
     }
     checkout() {
-        console.log(chalk.blue.bgYellowBright('Checkout!'))
-        console.log(`Items: ${this.showItems()}`);        
-        console.log(chalk.blue(`Total Items: ${this.totalItems}`));
-        console.log(`Total amount: ${this.getTotalAmount()}`);        
+        console.log(chalk.blue.bgYellowBright('Cart Details'));
+        console.log(title(`Items: ${this.showItems()}`));        
+        console.log(title('Total Items:'), chalk.green(`${this.totalItems}`));
+        console.log(title(`Total amount: ${this.getTotalAmount()}`));        
     }
 }
-let cart1 = new shoppingCart(['Apple', 2000, 'Banana', 2000, 'Orange', 1000]);
+let cart1 = new shoppingCart(['Apple', 2000, 'Banana', 2000, 'Jackfruit', 5000, 'Orange', 1000]);
 cart1.checkout()
-// mine.add('Apple', 1000);
-// mine.add('Banana', 2000);
 cart1.add('Pineapple', 2000);
 cart1.checkout()
 let cart2 = new shoppingCart(['Apple', 2000]);
 cart2.add('Grapes', 2000)
-cart2.remove('Banana')
 cart2.checkout()
