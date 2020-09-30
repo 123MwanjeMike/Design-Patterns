@@ -1,9 +1,9 @@
+var chalk = require('chalk');
 var shoppingCart = (function () {
     function shoppingCart(list) {
         this.items = [];
         this.prices = [];
         this.totalItems = 0;
-        this.totalAmount = 0;
         if (shoppingCart.instances !== 0) {
             return shoppingCart.current;
         }
@@ -46,26 +46,31 @@ var shoppingCart = (function () {
         }
     };
     shoppingCart.prototype.showItems = function () {
-        return this.items;
+        return chalk.green(this.items);
     };
     shoppingCart.prototype.getTotalAmount = function () {
+        this.totalAmount = 0;
         for (var i in this.prices) {
             this.totalAmount += this.prices[i];
         }
-        return this.totalAmount;
+        return chalk.redthis.totalAmount;
     };
     shoppingCart.prototype.checkout = function () {
-        console.log('Checkout!');
-        console.log("Items: " + this.items);
-        console.log("Total Items: " + this.totalItems);
+        console.log(chalk.blue.bgYellowBright('Checkout!'));
+        console.log("Items: " + this.showItems());
+        console.log(chalk.blue("Total Items: " + this.totalItems + " " + this.showItems()));
         console.log("Total amount: " + this.getTotalAmount());
     };
     shoppingCart.instances = 0;
     return shoppingCart;
 })();
-var mine = new shoppingCart(['Apple', 2000, 'Banana', 2000, 'Orange', 1000]);
-mine.checkout();
+var cart1 = new shoppingCart(['Apple', 2000, 'Banana', 2000, 'Orange', 1000]);
+cart1.checkout();
 // mine.add('Apple', 1000);
 // mine.add('Banana', 2000);
-mine.add('Pineapple', 2000);
-mine.checkout();
+cart1.add('Pineapple', 2000);
+cart1.checkout();
+var cart2 = new shoppingCart(['Apple', 2000]);
+cart2.add('Grapes', 2000);
+cart2.remove('Banana');
+cart2.checkout();
