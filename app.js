@@ -1,34 +1,30 @@
-const chalk = require("chalk");
-console.log(
-    chalk.green(`
-        Welome to my online shop!
-        Oranges, Bananas, Apples, Grapes, and Pineapples
-    `)
-);
-const questions = [
-  "Name of fruit you want to buy",
-  "How many of these do you need?",
-];
-
-// Should work in loop by end of project
-const shop = (i = 0) => {
-  process.stdout.write(`${questions[i]}`);
-  process.stdout.write(`: `);
-};
-shop();
-
-const cart = [];
-process.stdin.on("data", (data) => {
-  cart.push(data.toString().trim());
-  if (cart.length < questions.length) {
-    shop(cart.length);
-  } else {
-    process.exit();
-  }
-});
-
-process.on("exit", () => {
-  const [fruit, number] = cart;
-  console.log(chalk.red(`Your Cart: ${number} ${fruit}`))
-  console.log(chalk.blueBright(`Thank you for shopping with us`))
-});
+var shoppingCart = (function () {
+	function shoppingCart() {
+		this.items = []
+	}
+	shoppingCart.prototype.addItem = function (item) {
+		this.items.push(item)
+	}
+	shoppingCart.prototype.removeItem = function (item) {
+		var index = this.items.indexOf(item)
+		if (index > -1) {
+			this.items.splice(index, 1)
+		}
+	}
+	shoppingCart.prototype.showItems = function () {
+		for (var i in this.items) {
+			console.log('' + this.items[i])
+		}
+	}
+	shoppingCart.prototype.getTotalAmount = function () {
+	}
+	shoppingCart.prototype.checkout = function () {
+	}
+	return shoppingCart
+})()
+var mine = new shoppingCart()
+mine.addItem('Apple')
+mine.addItem('Banana')
+mine.showItems()
+mine.removeItem('Apple')
+mine.showItems()
