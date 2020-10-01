@@ -13,6 +13,8 @@ class shoppingCart {
 
     constructor(name, list){
         if(shoppingCart.instances !== 0){
+            console.log(`
+                You already have a Cart!`)
             return shoppingCart.current;
         }else{
             shoppingCart.instances = 1;

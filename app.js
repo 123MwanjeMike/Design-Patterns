@@ -6,6 +6,7 @@ var shoppingCart = (function () {
         this.prices = [];
         this.totalItems = 0;
         if (shoppingCart.instances !== 0) {
+            console.log("\n                You already have a Cart!");
             return shoppingCart.current;
         }
         else {
