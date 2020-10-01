@@ -1,7 +1,7 @@
 var chalk = require('chalk');
 var title = chalk.blue;
 var shoppingCart = (function () {
-    function shoppingCart(list) {
+    function shoppingCart(name, list) {
         this.items = [];
         this.prices = [];
         this.totalItems = 0;
@@ -11,6 +11,7 @@ var shoppingCart = (function () {
         else {
             shoppingCart.instances = 1;
             shoppingCart.current = this;
+            this.cartName = name;
             this.addMany(list);
         }
     }
@@ -57,7 +58,7 @@ var shoppingCart = (function () {
         return chalk.red(this.totalAmount);
     };
     shoppingCart.prototype.checkout = function () {
-        console.log(chalk.blue.bgYellowBright('Cart Details'));
+        console.log(chalk.blue.bgYellowBright(this.cartName + " details"));
         console.log(title("Items: " + this.showItems()));
         console.log(title('Total Items:'), chalk.green("" + this.totalItems));
         console.log(title("Total amount: " + this.getTotalAmount()));
@@ -65,10 +66,10 @@ var shoppingCart = (function () {
     shoppingCart.instances = 0;
     return shoppingCart;
 })();
-var cart1 = new shoppingCart(['Apple', 2000, 'Banana', 2000, 'Jackfruit', 5000, 'Orange', 1000]);
+var cart1 = new shoppingCart("cart1", ['Apple', 2000, 'Banana', 2000, 'Jackfruit', 5000, 'Orange', 1000]);
 cart1.checkout();
 cart1.add('Pineapple', 2000);
 cart1.checkout();
-var cart2 = new shoppingCart(['Apple', 2000]);
+var cart2 = new shoppingCart("cart2", ['Apple', 2000]);
 cart2.add('Grapes', 2000);
 cart2.checkout();
