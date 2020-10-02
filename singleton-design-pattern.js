@@ -74,3 +74,6 @@ cart1.checkout();
 var cart2 = new ShoppingCart("cart2", ['Apple', 2000]);
 cart2.add('Grapes', 2000);
 cart2.checkout();
+var cart3 = new ShoppingCart("cart2", ['Apple', 2000]);
+cart3.remove('Grapes');
+cart3.checkout();
