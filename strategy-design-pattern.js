@@ -17,7 +17,7 @@ var RegisterProductMethodB = (function () {
     }
     RegisterProductMethodB.prototype.registerProduct = function () {
         //Register a product with method B algorithm
-        console.log('Product registered with algorithm B');
+        return 'Product registered with algorithm B';
     };
     return RegisterProductMethodB;
 })();
@@ -26,7 +26,7 @@ var SaleApprovalByBankStatement = (function () {
     }
     SaleApprovalByBankStatement.prototype.approveASale = function () {
         // Approve a sale with bank payment algorithm
-        console.log('Sales approved by bank statement');
+        return 'Sales approved by bank statement';
     };
     return SaleApprovalByBankStatement;
 })();
@@ -35,7 +35,7 @@ var SaleApprovalByMMTransaction = (function () {
     }
     SaleApprovalByMMTransaction.prototype.approveASale = function () {
         // Approve a sale with mobile money payment algorithm
-        console.log('Sales approved from mobile money payment');
+        return 'Sales approved from mobile money payment';
     };
     return SaleApprovalByMMTransaction;
 })();
@@ -49,11 +49,7 @@ var User = (function () {
     User.prototype.viewProfile = function () { };
     User.prototype.logout = function () { };
     User.prototype.setSaleApprovalMethod = function (sam) {
-        // Is used by the subtype to set a preferred SalesApproval approach. either by mobile or bank payment
-        if (sam) {
-        }
-        else {
-        }
+        // Is used by the subtype to set a preferred SalesApproval approach. Either by mobile or bank payment
     };
     User.prototype.addProducToStock = function () { };
     User.prototype.viewProducts = function () { };
@@ -90,4 +86,4 @@ var Client = (function (_super) {
 var manager1 = new StoreManager('manager1');
 console.log(manager1.productRegistration.registerProduct());
 var agent1 = new SalesAgent('agent1');
-agent1.productRegistration.registerProduct();
+console.log(agent1.productRegistration.registerProduct());

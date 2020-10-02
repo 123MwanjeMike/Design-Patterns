@@ -51,7 +51,7 @@ class User {
     viewProfile(){}
     logout(){}
     setSaleApprovalMethod( sam: SalesApproval){
-        // Is used by the subtype to set a preferred SalesApproval approach. either by mobile or bank payment
+        // Is used by the subtype to set a preferred SalesApproval approach. Either by mobile or bank payment
     }
     addProducToStock(){}
     viewProducts(){}
