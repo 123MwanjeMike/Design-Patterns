@@ -50,8 +50,9 @@ class User {
     editProfile(){}
     viewProfile(){}
     logout(){}
-    setSaleApprovalMethod( sam: SalesApproval){
+    setSaleApprovalMethod( salesApproval: SalesApproval){
         // Is used by the subtype to set a preferred SalesApproval approach. Either by mobile or bank payment
+        this.salesApproval = salesApproval;
     }
     addProducToStock(){}
     viewProducts(){}
@@ -77,3 +78,7 @@ let manager1 = new StoreManager('manager1')
 console.log(manager1.productRegistration.registerProduct())
 let agent1 = new SalesAgent('agent1')
 console.log(agent1.productRegistration.registerProduct())
+agent1.setSaleApprovalMethod(new SaleApprovalByBankStatement)
+console.log(agent1.salesApproval.approveASale())
+agent1.setSaleApprovalMethod(new SaleApprovalByMMTransaction)
+console.log(agent1.salesApproval.approveASale())

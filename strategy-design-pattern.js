@@ -48,8 +48,9 @@ var User = (function () {
     User.prototype.editProfile = function () { };
     User.prototype.viewProfile = function () { };
     User.prototype.logout = function () { };
-    User.prototype.setSaleApprovalMethod = function (sam) {
+    User.prototype.setSaleApprovalMethod = function (salesApproval) {
         // Is used by the subtype to set a preferred SalesApproval approach. Either by mobile or bank payment
+        this.salesApproval = salesApproval;
     };
     User.prototype.addProducToStock = function () { };
     User.prototype.viewProducts = function () { };
@@ -87,3 +88,7 @@ var manager1 = new StoreManager('manager1');
 console.log(manager1.productRegistration.registerProduct());
 var agent1 = new SalesAgent('agent1');
 console.log(agent1.productRegistration.registerProduct());
+agent1.setSaleApprovalMethod(new SaleApprovalByBankStatement);
+console.log(agent1.salesApproval.approveASale());
+agent1.setSaleApprovalMethod(new SaleApprovalByMMTransaction);
+console.log(agent1.salesApproval.approveASale());
