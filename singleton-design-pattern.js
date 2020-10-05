@@ -67,13 +67,14 @@ var ShoppingCart = (function () {
     ShoppingCart.instances = 0;
     return ShoppingCart;
 })();
-var cart1 = new ShoppingCart("cart1", ['Apple', 2000, 'Banana', 2000, 'Jackfruit', 5000, 'Orange', 1000]);
-cart1.checkout();
-cart1.add('Pineapple', 2000);
-cart1.checkout();
-var cart2 = new ShoppingCart("cart2", ['Apple', 2000]);
-cart2.add('Grapes', 2000);
-cart2.checkout();
-var cart3 = new ShoppingCart("cart2", ['Apple', 2000]);
-cart3.remove('Grapes');
-cart3.checkout();
+// let cart1 = new ShoppingCart("cart1", ['Apple', 2000, 'Banana', 2000, 'Jackfruit', 5000, 'Orange', 1000]);
+// cart1.checkout()
+// cart1.add('Pineapple', 2000);
+// cart1.checkout()
+// let cart2 = new ShoppingCart("cart2", ['Apple', 2000]);
+// cart2.add('Grapes', 2000)
+// cart2.checkout()
+// let cart3 = new ShoppingCart("cart2", ['Apple', 2000]);
+// cart3.remove('Grapes')
+// cart3.checkout()
+module.exports = ShoppingCart;

@@ -3,6 +3,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
+var ShoppingCart = require('./singleton-design-pattern');
 var RegisterProductMethodA = (function () {
     function RegisterProductMethodA() {
     }
@@ -44,17 +45,19 @@ var User = (function () {
         this.username = username;
         console.log("User " + this.username + " created");
     }
-    User.prototype.login = function (userName, Password) { };
-    User.prototype.editProfile = function () { };
-    User.prototype.viewProfile = function () { };
-    User.prototype.logout = function () { };
     User.prototype.setSaleApprovalMethod = function (salesApproval) {
         // Is used by the subtype to set a preferred SalesApproval approach. Either by mobile or bank payment
         this.salesApproval = salesApproval;
     };
+    // createCart(list){
+    //     this.shoppingCart = new ShoppingCart(`${this.username} Cart`, list)
+    // }
+    User.prototype.login = function (userName, Password) { };
+    User.prototype.editProfile = function () { };
+    User.prototype.viewProfile = function () { };
+    User.prototype.logout = function () { };
     User.prototype.addProducToStock = function () { };
     User.prototype.viewProducts = function () { };
-    User.prototype.addToCart = function () { };
     User.prototype.shop = function () { };
     return User;
 })();
@@ -92,3 +95,7 @@ agent1.setSaleApprovalMethod(new SaleApprovalByBankStatement);
 console.log(agent1.salesApproval.approveASale());
 agent1.setSaleApprovalMethod(new SaleApprovalByMMTransaction);
 console.log(agent1.salesApproval.approveASale());
+// agent1.createCart(['Apple', 2000, 'Banana', 2000, 'Jackfruit', 5000, 'Orange', 1000])
+// agent1.shoppingCart.checkout()
+agent1.shoppingCart = new ShoppingCart('jj', ['Apple', 2000, 'Banana', 2000, 'Jackfruit', 5000, 'Orange', 1000]);
+agent1.shoppingCart.checkout();

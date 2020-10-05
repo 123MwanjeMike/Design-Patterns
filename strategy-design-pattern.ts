@@ -1,3 +1,5 @@
+const ShoppingCart = require('./singleton-design-pattern');
+
 interface ProductRegistration {
     registerProduct()
 }// Strategy for product registration
@@ -41,22 +43,26 @@ class User {
     salesApproval: SalesApproval
     surname: String
     role: String
+    shoppingCart: any;
+    
 
     constructor(username) {
         this.username = username
         console.log(`User ${this.username} created`)
     }
-    login(userName: String, Password: String){}
-    editProfile(){}
-    viewProfile(){}
-    logout(){}
     setSaleApprovalMethod( salesApproval: SalesApproval){
         // Is used by the subtype to set a preferred SalesApproval approach. Either by mobile or bank payment
         this.salesApproval = salesApproval;
     }
+    createCart(list){
+        this.shoppingCart = new ShoppingCart(`${this.username} Cart`, list)
+    }
+    login(userName: String, Password: String){}
+    editProfile(){}
+    viewProfile(){}
+    logout(){}
     addProducToStock(){}
     viewProducts(){}
-    addToCart(){}
     shop(){}
 }
 
@@ -82,3 +88,5 @@ agent1.setSaleApprovalMethod(new SaleApprovalByBankStatement)
 console.log(agent1.salesApproval.approveASale())
 agent1.setSaleApprovalMethod(new SaleApprovalByMMTransaction)
 console.log(agent1.salesApproval.approveASale())
+agent1.createCart(['Apple', 2000, 'Banana', 2000, 'Jackfruit', 5000, 'Orange', 1000])
+agent1.shoppingCart.checkout()
