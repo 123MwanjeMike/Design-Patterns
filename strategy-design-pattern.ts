@@ -1,4 +1,5 @@
 const ShoppingCart = require('./singleton-design-pattern');
+const Computer = require('./decorator-design-pattern');
 
 interface ProductRegistration {
     registerProduct()
