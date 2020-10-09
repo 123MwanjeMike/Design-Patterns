@@ -120,12 +120,11 @@ var ComputerWithHDCamera = (function (_super) {
     };
     return ComputerWithHDCamera;
 })(ComputerDecorator);
-// let laptop1 = new Laptop("Mac Probook Air", 250, "160", "32156jkg7")
-// console.log(laptop1)
-// laptop1 = new ComputerWithMouse(laptop1)
-// console.log(laptop1)
-// laptop1 = new ComputerWithHDCamera(laptop1)
-// console.log(laptop1)
-// laptop1 = new ComputerWithSilverBody(laptop1)
-// console.log(laptop1)
-module.exports = Computer;
+var laptop1 = new Laptop("Mac Probook Air", 250, "160", "32156jkg7");
+console.log(laptop1);
+laptop1 = new ComputerWithMouse(laptop1);
+console.log(laptop1);
+laptop1 = new ComputerWithHDCamera(laptop1);
+console.log(laptop1);
+laptop1 = new ComputerWithSilverBody(laptop1);
+console.log(laptop1);

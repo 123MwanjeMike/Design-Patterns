@@ -1,10 +1,9 @@
 const chalk = require('chalk');
-const Product = require('./decorator-design-pattern')
 const title = chalk.blue;
 
 class ShoppingCart {
 
-    items: Array<Product> = [];
+    items: any[];
     prices: number[] = [];
     totalItems: number = 0;
     totalAmount: number;
@@ -76,15 +75,15 @@ class ShoppingCart {
     }
 }
 
-// let cart1 = new ShoppingCart("cart1", ['Apple', 2000, 'Banana', 2000, 'Jackfruit', 5000, 'Orange', 1000]);
-// cart1.checkout()
-// cart1.add('Pineapple', 2000);
-// cart1.checkout()
-// let cart2 = new ShoppingCart("cart2", ['Apple', 2000]);
-// cart2.add('Grapes', 2000)
-// cart2.checkout()
-// let cart3 = new ShoppingCart("cart2", ['Apple', 2000]);
-// cart3.remove('Grapes')
-// cart3.checkout()
+let cart1 = new ShoppingCart("cart1", ['Apple', 2000, 'Banana', 2000, 'Jackfruit', 5000, 'Orange', 1000]);
+cart1.checkout()
+cart1.add('Pineapple', 2000);
+cart1.checkout()
+let cart2 = new ShoppingCart("cart2", ['Apple', 2000]);
+cart2.add('Grapes', 2000)
+cart2.checkout()
+let cart3 = new ShoppingCart("cart2", ['Apple', 2000]);
+cart3.remove('Grapes')
+cart3.checkout()
 
 module.exports =  ShoppingCart;

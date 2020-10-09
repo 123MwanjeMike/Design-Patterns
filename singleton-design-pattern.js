@@ -1,8 +1,8 @@
 var chalk = require('chalk');
+// const Product = require('./decorator-design-pattern')
 var title = chalk.blue;
 var ShoppingCart = (function () {
     function ShoppingCart(name, list) {
-        this.items = [];
         this.prices = [];
         this.totalItems = 0;
         if (ShoppingCart.instances !== 0) {
