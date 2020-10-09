@@ -1,9 +1,10 @@
 const chalk = require('chalk');
+const Product = require('./decorator-design-pattern')
 const title = chalk.blue;
 
 class ShoppingCart {
 
-    items: any[] = [];
+    items: Array<Product> = [];
     prices: number[] = [];
     totalItems: number = 0;
     totalAmount: number;

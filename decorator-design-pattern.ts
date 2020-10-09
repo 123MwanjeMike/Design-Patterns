@@ -138,4 +138,4 @@ class ComputerWithHDCamera extends ComputerDecorator {
 // laptop1 = new ComputerWithSilverBody(laptop1)
 // console.log(laptop1)
 
-module.exports = Computer;
+module.exports
