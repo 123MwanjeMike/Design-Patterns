@@ -12,6 +12,9 @@ var Computer = (function () {
     Computer.prototype.getCost = function () {
         return this.cost;
     };
+    Computer.prototype.getDescription = function () {
+        return "Generic Computer";
+    };
     return Computer;
 })();
 var Desktop = (function (_super) {
@@ -25,6 +28,12 @@ var Desktop = (function (_super) {
         this.id = id;
         this.serialNumber = serialNumber;
     }
+    Desktop.prototype.getCost = function () {
+        return this.cost;
+    };
+    Desktop.prototype.getDescription = function () {
+        return "Desktop Computer";
+    };
     return Desktop;
 })(Computer);
 var Laptop = (function (_super) {
@@ -38,6 +47,12 @@ var Laptop = (function (_super) {
         this.id = id;
         this.serialNumber = serialNumber;
     }
+    Laptop.prototype.getCost = function () {
+        return this.cost;
+    };
+    Laptop.prototype.getDescription = function () {
+        return "Laptop Computer";
+    };
     return Laptop;
 })(Computer);
 var ComputerDecorator = (function (_super) {
@@ -46,45 +61,71 @@ var ComputerDecorator = (function (_super) {
         _super.call(this);
         this.computer = computer;
     }
+    ComputerDecorator.prototype.setCost = function (cost) {
+        this.cost = cost;
+    };
+    ComputerDecorator.prototype.getCost = function () {
+        return this.cost;
+    };
     return ComputerDecorator;
 })(Computer);
 var ComputerWithMouse = (function (_super) {
     __extends(ComputerWithMouse, _super);
     function ComputerWithMouse(computer) {
-        computer.category = computer.category + " with mouse";
-        computer.cost = computer.cost + 5;
         _super.call(this, computer);
+        this.computer = computer;
+        this.setCost();
     }
+    ComputerWithMouse.prototype.setCost = function () {
+        this.cost = this.computer.cost + 5;
+    };
+    ComputerWithMouse.prototype.getCost = function () {
+        return this.computer.cost;
+    };
+    ComputerWithMouse.prototype.getDescription = function () {
+        return this.computer.getDescription() + " + 1 Mouse.";
+    };
     return ComputerWithMouse;
 })(ComputerDecorator);
 var ComputerWithSilverBody = (function (_super) {
     __extends(ComputerWithSilverBody, _super);
     function ComputerWithSilverBody(computer) {
-        computer.category = computer.category + " with silver body";
-        computer.cost = computer.cost + 10;
         _super.call(this, computer);
+        this.computer = computer;
+        this.setCost();
     }
+    ComputerWithSilverBody.prototype.setCost = function () {
+        this.cost = this.computer.cost + 10;
+    };
+    ComputerWithSilverBody.prototype.getCost = function () {
+        return this.computer.cost;
+    };
+    ComputerWithSilverBody.prototype.getDescription = function () {
+        return this.computer.getDescription() + " + 1 Silver Body Coarting.";
+    };
     return ComputerWithSilverBody;
 })(ComputerDecorator);
 var ComputerWithHDCamera = (function (_super) {
     __extends(ComputerWithHDCamera, _super);
     function ComputerWithHDCamera(computer) {
-        computer.category = computer.category + " with HD camera";
-        computer.cost = computer.cost + 100;
         _super.call(this, computer);
+        this.computer = computer;
+        this.setCost();
     }
+    ComputerWithHDCamera.prototype.setCost = function () {
+        this.cost = this.computer.cost + 30;
+    };
+    ComputerWithHDCamera.prototype.getDescription = function () {
+        return this.computer.getDescription() + " + 1 HD Camera.";
+    };
     return ComputerWithHDCamera;
 })(ComputerDecorator);
-var computer1 = new Computer();
-console.log(computer1);
-computer1 = new ComputerWithMouse(computer1);
-console.log(computer1);
 var laptop1 = new Laptop("Mac Probook Air", 250, "160", "32156jkg7");
 console.log(laptop1);
 laptop1 = new ComputerWithMouse(laptop1);
 console.log(laptop1);
-var desktop1 = new Desktop("Macbook Desktop", 150, "124", "32156dfdfdf");
-console.log(desktop1);
-desktop1 = new ComputerWithSilverBody(desktop1);
-console.log(desktop1);
-module.exports = Computer;
+laptop1 = new ComputerWithHDCamera(laptop1);
+console.log(laptop1);
+laptop1 = new ComputerWithSilverBody(laptop1);
+console.log(laptop1);
+// module.exports = Computer;
